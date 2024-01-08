@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="styles.css" />
   </head>
-  
+
   <body>
     <header>
       <h1>Movies Library</h1>
@@ -40,8 +40,48 @@
           <label for="director">Director:</label>
           <input type="text" id="director" name="director" required />
 
+          <section id="cast-section">
+            <h3>Cast</h3>
+            <div class="actor" data-index="0">
+              <label for="actor-name-0">Actor Name:</label>
+              <input
+                type="text"
+                id="actor-name-0"
+                name="actor-name-0"
+                required
+              />
+
+              <label for="actor-age-0">Actor Age:</label>
+              <input
+                type="number"
+                id="actor-age-0"
+                name="actor-age-0"
+                required
+              />
+
+              <label for="actor-country-0">Actor Country:</label>
+              <input
+                type="text"
+                id="actor-country-0"
+                name="actor-country-0"
+                required
+              />
+            </div>
+
+            <!-- Button to add more actors dynamically -->
+            <button type="button" id="add-actor-btn">+ Add Actor</button>
+          </section>
+
           <button type="submit">Add Movie</button>
         </form>
+      </section>
+
+      <!-- Movie Details Section -->
+      <section id="movie-details" style="display: none">
+        <h2>Movie Details</h2>
+        <div id="movie-details-container">
+          <!-- Movie details will be dynamically added here -->
+        </div>
       </section>
     </main>
 
