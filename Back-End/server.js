@@ -4,10 +4,8 @@ const sqlite3 = require("sqlite3");
 const app = express();
 const PORT = 3000;
 
-// Connect to SQLite database
 const db = new sqlite3.Database("movies.db");
 
-// Create movies table
 db.run(`
   CREATE TABLE movies (
     id INTEGER PRIMARY KEY,
@@ -20,7 +18,6 @@ db.run(`
   )
 `);
 
-// Create casts table
 db.run(`
   CREATE TABLE casts (
     id INTEGER PRIMARY KEY,
@@ -31,7 +28,6 @@ db.run(`
   )
 `);
 
-// Create comments table
 db.run(`
   CREATE TABLE comments (
     id INTEGER PRIMARY KEY,
@@ -41,7 +37,6 @@ db.run(`
   )
 `);
 
-// RESTful API Endpoints...
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

@@ -7,7 +7,7 @@ body {
 header {
   background-color: rgba(4, 66, 61, 0.843);
   color: #fff;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
 }
 
@@ -46,9 +46,17 @@ form {
 
 label {
   display: block;
+  margin-bottom: 5px;
 }
 
-button {
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button.btn-primary,
+button.btn-secondary {
   background-color: rgba(4, 66, 61, 0.843);
   color: #fff;
   padding: 10px;
@@ -56,6 +64,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #006c65; /* Darker shade on hover */
+button.btn-primary:hover,
+button.btn-secondary:hover {
+  background-color: #006c65 !important;
 }
