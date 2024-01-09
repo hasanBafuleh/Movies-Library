@@ -1,44 +1,18 @@
 const express = require("express");
 const sqlite3 = require("sqlite3");
+const path = require("path");
+const port = 3000;
 
 const app = express();
-const PORT = 3000;
 
-const db = new sqlite3.Database("movies.db");
+// Express middleware to parse JSON
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "../Front-End")));
 
-db.run(`
-  CREATE TABLE movies (
-    id INTEGER PRIMARY KEY,
-    title TEXT,
-    description TEXT,
-    release_year INTEGER,
-    genre TEXT,
-    director TEXT,
-    likes INTEGER DEFAULT 0
-  )
-`);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Front-End/index.html"));
+});
 
-db.run(`
-  CREATE TABLE casts (
-    id INTEGER PRIMARY KEY,
-    movie_id INTEGER,
-    actor_name TEXT,
-    actor_age INTEGER,
-    actor_country TEXT
-  )
-`);
-
-db.run(`
-  CREATE TABLE comments (
-    id INTEGER PRIMARY KEY,
-    movie_id INTEGER,
-    user TEXT,
-    comment TEXT
-  )
-`);
-
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
-  
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
