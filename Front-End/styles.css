@@ -37,8 +37,7 @@ h2 {
 }
 
 #movie-list,
-#add-movie,
-#movie-details {
+#add-movie {
   margin-bottom: 20px;
 }
 
@@ -66,19 +65,47 @@ label {
 .form-control {
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 button.btn-primary,
 button.btn-secondary {
-  background-color: rgba(4, 66, 61, 0.843);
+  background-color: #04423dd7;
   color: #fff;
   padding: 10px;
   border: none;
   cursor: pointer;
+  width: 100%;
 }
 
 button.btn-primary:hover,
-button.btn-secondary:hover {
+button.btn-secondary:hover,
+body .navbar button:hover {
   background-color: #006c65 !important;
+}
+
+body .navbar {
+  background-color: #6dc1b0 !important;
+}
+
+body .navbar button {
+  border-radius: 4px;
+  background-color: #04423dd7;
+  color: #fff;
+}
+
+body .navbar form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+body .navbar .container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+body .navbar .container-fluid .d-flex {
+  width: 100%;
+  max-width: 400px;
 }

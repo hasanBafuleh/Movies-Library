@@ -7,6 +7,12 @@ async function addMovie() {
   const actorName1 = document.querySelector("#actorName1").value;
   const actorAge1 = document.querySelector("#actorAge1").value;
   const actorCountry1 = document.querySelector("#actorCountry1").value;
+  const actorName2 = document.querySelector("#actorName2").value;
+  const actorAge2 = document.querySelector("#actorAge2").value;
+  const actorCountry2 = document.querySelector("#actorCountry2").value;
+  const actorName3 = document.querySelector("#actorName3").value;
+  const actorAge3 = document.querySelector("#actorAge3").value;
+  const actorCountry3 = document.querySelector("#actorCountry3").value;
 
   let response = await fetch("http://localhost:3000/movies", {
     method: "POST",
@@ -20,6 +26,12 @@ async function addMovie() {
       actorName1: actorName1,
       actorAge1: actorAge1,
       actorCountry1: actorCountry1,
+      actorName2: actorName2,
+      actorAge2: actorAge2,
+      actorCountry2: actorCountry2,
+      actorName3: actorName3,
+      actorAge3: actorAge3,
+      actorCountry3: actorCountry3,
     }),
   });
 
@@ -31,6 +43,12 @@ async function addMovie() {
   document.querySelector(`#actorName1`).value = "";
   document.querySelector(`#actorAge1`).value = "";
   document.querySelector(`#actorCountry1`).value = "";
+  document.querySelector(`#actorName2`).value = "";
+  document.querySelector(`#actorAge2`).value = "";
+  document.querySelector(`#actorCountry2`).value = "";
+  document.querySelector(`#actorName3`).value = "";
+  document.querySelector(`#actorAge3`).value = "";
+  document.querySelector(`#actorCountry3`).value = "";
   show();
 }
 
@@ -43,29 +61,60 @@ async function show() {
 
   for (let index = 0; index < movies.length; index++) {
     document.querySelector("#movie-list").innerHTML += `
-    <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title mb-3">${movies[index].title}</h5>
-      <p class="card-text">
-        <strong>Description:</strong> ${movies[index].description}
-      </p>
-      <p class="card-text"><strong>Release Year:</strong> ${movies[index].releaseYear}</p>
-      <p class="card-text"><strong>Genre:</strong> ${movies[index].genre}</p>
-      <p class="card-text"><strong>Director:</strong> ${movies[index].director}</p>
-      <h6 class="card-subtitle mb-3 mt-4 text-muted">Cast</h6>
-      <div class="list-group">
-        <div class="list-group-item">
-          <div class="row">
-            <div class="col">
-              <h6 class="mb-1">${movies[index].actorName1}</h6>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title mb-3">${movies[index].title}</h5>
+          <p class="card-text">
+            <strong>Description:</strong> ${movies[index].description}
+          </p>
+          <p class="card-text"><strong>Release Year:</strong> ${movies[index].releaseYear}</p>
+          <p class="card-text"><strong>Genre:</strong> ${movies[index].genre}</p>
+          <p class="card-text"><strong>Director:</strong> ${movies[index].director}</p>
+          <h6 class="card-subtitle mb-3 mt-4 text-muted">Cast</h6>
+          <div class="list-group">
+            <div class="list-group-item">
+              <div class="row">
+                <div class="col">
+                  <h6 class="mb-1">${movies[index].actorName1}</h6>
+                </div>
+                <div class="col text-end">
+                  <small>Age: ${movies[index].actorAge1}</small>
+                </div>
+                <div class="col text-end">
+                  <small>Country: ${movies[index].actorCountry1}</small>
+                </div>
+              </div>
             </div>
-            <div class="col text-end">
-              <small>Age: ${movies[index].actorAge1}</small>
+            <div class="list-group-item">
+              <div class="row">
+                <div class="col">
+                  <h6 class="mb-1">${movies[index].actorName2}</h6>
+                </div>
+                <div class="col text-end">
+                  <small>Age: ${movies[index].actorAge2}</small>
+                </div>
+                <div class="col text-end">
+                  <small>Country: ${movies[index].actorCountry2}</small>
+                </div>
+              </div>
             </div>
-            <div class="col text-end">
-              <small>Country: ${movies[index].actorCountry1}</small>
+            <div class="list-group-item">
+              <div class="row">
+                <div class="col">
+                  <h6 class="mb-1">${movies[index].actorName3}</h6>
+                </div>
+                <div class="col text-end">
+                  <small>Age: ${movies[index].actorAge3}</small>
+                </div>
+                <div class="col text-end">
+                  <small>Country: ${movies[index].actorCountry3}</small>
+                </div>
+              </div>
             </div>
           </div>
-        </div>`;
+        </div>
+      </div>`;
   }
 }
+
+document.addEventListener("DOMContentLoaded", show);

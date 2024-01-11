@@ -23,6 +23,14 @@
         details, and even delete entries. Your personalized movie database is
         just a click away!
       </p>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
     </section>
 
     <main>
@@ -115,10 +123,90 @@
                 </div>
               </div>
             </div>
-          <button
+            <div class="row" id="cast-section">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="actorName1" class="form-label">Actor Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="actorName2"
+                    name="actorName2"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="actorAge1" class="form-label">Actor Age:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="actorAge2"
+                    name="actorAge2"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="actorCountry1" class="form-label"
+                    >Actor Country:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="actorCountry2"
+                    name="actorCountry2"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row" id="cast-section">
+              <div class="col">
+                <div class="mb-3">
+                  <label for="actorName2" class="form-label">Actor Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="actorName3"
+                    name="actorName3"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="actorAge2" class="form-label">Actor Age:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="actorAge3"
+                    name="actorAge3"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col">
+                <div class="mb-3">
+                  <label for="actorCountry2" class="form-label"
+                    >Actor Country:</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="actorCountry3"
+                    name="actorCountry3"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <button
             onclick="addMovie()"
             type="button"
-            class="btn btn-primary"
+            class="btn btn-primary btn-block"
             id="addMovieBtn"
           >
             Add Movie

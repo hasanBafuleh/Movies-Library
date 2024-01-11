@@ -32,7 +32,13 @@ app.post("/movies", (req, res) => {
         director,
         actorName1,
         actorAge1,
-        actorCountry1
+        actorCountry1,
+        actorName2,
+        actorAge2,
+        actorCountry2,
+        actorName3,
+        actorAge3,
+        actorCountry3
       )
       VALUES
       (
@@ -43,7 +49,14 @@ app.post("/movies", (req, res) => {
         "${req.body.director}",
         "${req.body.actorName1}",
         "${req.body.actorAge1}",
-        "${req.body.actorCountry1}"
+        "${req.body.actorCountry1}",
+        "${req.body.actorName2}",
+        "${req.body.actorAge2}",
+        "${req.body.actorCountry2}",
+        "${req.body.actorName3}",
+        "${req.body.actorAge3}",
+        "${req.body.actorCountry3}"
+        
       )
 
   `,

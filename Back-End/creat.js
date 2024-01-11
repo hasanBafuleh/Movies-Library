@@ -12,7 +12,13 @@ db.run(
         [director] NVARCHAR(255),
         [actorName1] NVARCHAR(255),
         [actorAge1] NVARCHAR(255),
-        [actorCountry1] NVARCHAR(255)
+        [actorCountry1] NVARCHAR(255),
+        [actorName2] NVARCHAR(255),
+        [actorAge2] NVARCHAR(255),
+        [actorCountry2] NVARCHAR(255),
+        [actorName3] NVARCHAR(255),
+        [actorAge3] NVARCHAR(255),
+        [actorCountry3] NVARCHAR(255)
     )
 `
 );
