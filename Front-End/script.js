@@ -44,11 +44,11 @@ async function show() {
     <div class="card-body">
       <h5 class="card-title mb-3">${movies[index].title}</h5>
       <p class="card-text">
-        <strong>Description:</strong>${movies[index].description}
+        <strong>Description:</strong> ${movies[index].description}
       </p>
-      <p class="card-text"><strong>Release Year:</strong>${movies[index].releaseYear}</p>
-      <p class="card-text"><strong>Genre:</strong>${movies[index].genre}</p>
-      <p class="card-text"><strong>Director:</strong>${movies[index].director}</p>
+      <p class="card-text"><strong>Release Year:</strong> ${movies[index].releaseYear}</p>
+      <p class="card-text"><strong>Genre:</strong> ${movies[index].genre}</p>
+      <p class="card-text"><strong>Director:</strong> ${movies[index].director}</p>
       <h6 class="card-subtitle mb-3 mt-4 text-muted">Cast</h6>
       <div class="list-group">
         <div class="list-group-item">

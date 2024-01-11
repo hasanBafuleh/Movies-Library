@@ -1,5 +1,5 @@
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -11,9 +11,23 @@ header {
   text-align: center;
 }
 
+#welcome-section {
+  background-color: #6dc1b0;
+  color: #fff;
+  padding: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#welcome-section p {
+  font-size: 20px;
+  margin: 20px 0;
+}
+
 main {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
   border: 1px solid #ddd;
 }
