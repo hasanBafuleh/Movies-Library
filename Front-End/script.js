@@ -38,9 +38,12 @@ async function show() {
   let response = await fetch("http://localhost:3000/movies");
   let movies = await response.json();
 
+  // Clear existing movie list
+  document.querySelector("#movie-list").innerHTML = "";
+
   for (let index = 0; index < movies.length; index++) {
     document.querySelector("#movie-list").innerHTML += `
-    <div class="card">
+    <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title mb-3">${movies[index].title}</h5>
       <p class="card-text">
