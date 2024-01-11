@@ -181,41 +181,40 @@ async function editMovie(movieId) {
 }
 
 async function updateMovie(movieId) {
-  // Implement logic to update the movie in the database and update UI
-  const title = document.querySelector("#title").value;
-  const description = document.querySelector("#description").value;
-  const releaseYear = document.querySelector("#releaseYear").value;
-  const genre = document.querySelector("#genre").value;
-  const director = document.querySelector("#director").value;
-  const actorName1 = document.querySelector("#actorName1").value;
-  const actorAge1 = document.querySelector("#actorAge1").value;
-  const actorCountry1 = document.querySelector("#actorCountry1").value;
-  const actorName2 = document.querySelector("#actorName2").value;
-  const actorAge2 = document.querySelector("#actorAge2").value;
-  const actorCountry2 = document.querySelector("#actorCountry2").value;
-  const actorName3 = document.querySelector("#actorName3").value;
-  const actorAge3 = document.querySelector("#actorAge3").value;
-  const actorCountry3 = document.querySelector("#actorCountry3").value;
+  // Delete the old movie
+  await fetch(`http://localhost:3000/movies/${movieId}`, { method: "DELETE" });
 
-  await fetch(`http://localhost:3000/movies/${movieId}`, {
+  // Update the existing movie in the array
+  const moviesResponse = await fetch("http://localhost:3000/movies");
+  let movies = await moviesResponse.json();
+  movies = movies.map((movie) => {
+    if (movie.id === movieId) {
+      return {
+        id: movieId,
+        title: document.querySelector("#title").value,
+        description: document.querySelector("#description").value,
+        releaseYear: document.querySelector("#releaseYear").value,
+        genre: document.querySelector("#genre").value,
+        director: document.querySelector("#director").value,
+        actorName1: document.querySelector("#actorName1").value,
+        actorAge1: document.querySelector("#actorAge1").value,
+        actorCountry1: document.querySelector("#actorCountry1").value,
+        actorName2: document.querySelector("#actorName2").value,
+        actorAge2: document.querySelector("#actorAge2").value,
+        actorCountry2: document.querySelector("#actorCountry2").value,
+        actorName3: document.querySelector("#actorName3").value,
+        actorAge3: document.querySelector("#actorAge3").value,
+        actorCountry3: document.querySelector("#actorCountry3").value,
+      };
+    }
+    return movie;
+  });
+
+  // Update the movies array in the database
+  await fetch("http://localhost:3000/movies", {
     method: "PUT",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      title: title,
-      description: description,
-      releaseYear: releaseYear,
-      genre: genre,
-      director: director,
-      actorName1: actorName1,
-      actorAge1: actorAge1,
-      actorCountry1: actorCountry1,
-      actorName2: actorName2,
-      actorAge2: actorAge2,
-      actorCountry2: actorCountry2,
-      actorName3: actorName3,
-      actorAge3: actorAge3,
-      actorCountry3: actorCountry3,
-    }),
+    body: JSON.stringify(movies),
   });
 
   // Reset the form and update the button text to indicate add mode
@@ -238,6 +237,8 @@ async function updateMovie(movieId) {
   document.querySelector(`#actorName3`).value = "";
   document.querySelector(`#actorAge3`).value = "";
   document.querySelector(`#actorCountry3`).value = "";
+
+  // Refresh the movie list
   show();
 }
 
