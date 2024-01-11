@@ -63,6 +63,8 @@ async function show() {
     document.querySelector("#movie-list").innerHTML += `
       <div class="card mb-3">
         <div class="card-body">
+          <button type="button" class="btn-close" aria-label="Close" onclick="deleteMovie(${movies[index].id})"
+            style="position: absolute; top: 15px; right: 15px;"></button>
           <h5 class="card-title mb-3">${movies[index].title}</h5>
           <p class="card-text">
             <strong>Description:</strong> ${movies[index].description}
@@ -110,6 +112,11 @@ async function show() {
                   <small>Country: ${movies[index].actorCountry3}</small>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col">
+              <button type="button" class="btn btn-info" onclick="editMovie(${movies[index].id})" style="position: absolute; bottom: 15px; right: 15px; border-radius: 4px; background-color: #04423dd7; color: #fff;">Edit</button>
             </div>
           </div>
         </div>
