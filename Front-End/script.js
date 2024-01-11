@@ -55,8 +55,8 @@ async function addMovie() {
 async function show() {
   let response = await fetch("http://localhost:3000/movies");
   let movies = await response.json();
+  movies = movies.reverse();
 
-  // Clear existing movie list
   document.querySelector("#movie-list").innerHTML = "";
 
   for (let index = 0; index < movies.length; index++) {
@@ -116,5 +116,29 @@ async function show() {
       </div>`;
   }
 }
+
+function searchMovies() {
+  const searchInput = document.querySelector(".form-control");
+  const searchTerm = searchInput.value.toLowerCase();
+
+  const cards = document.querySelectorAll("#movie-list .card");
+
+  // Loop through each card and check if the movie title matches the search term
+  cards.forEach((card) => {
+    const title = card.querySelector(".card-title").innerText.toLowerCase();
+
+    if (title.includes(searchTerm)) {
+      card.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+}
+
+document.querySelector(".d-flex").addEventListener("submit", function (event) {
+  event.preventDefault();
+  searchMovies();
+});
 
 document.addEventListener("DOMContentLoaded", show);
