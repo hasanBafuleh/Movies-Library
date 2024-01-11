@@ -116,8 +116,8 @@ async function show() {
           </div>
           <div class="row mt-5">
             <div class="col">
-              <button type="button" class="btn btn-info" onclick="editMovie(${movies[index].id})" style="position: absolute; bottom: 15px; right: 15px; border-radius: 4px; background-color: #04423dd7; color: #fff;">Edit</button>
-            </div>
+              <button type="button" class="btn btn-info edit-button" onclick="editMovie(${movies[index].id})"
+              style="position: absolute; bottom: 15px; right: 15px; border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;">Edit</button></div>
           </div>
         </div>
       </div>`;
