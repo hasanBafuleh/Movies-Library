@@ -143,6 +143,104 @@ function searchMovies() {
   });
 }
 
+async function deleteMovie(movieId) {
+  // Implement logic to delete the movie from the database and update UI
+  await fetch(`http://localhost:3000/movies/${movieId}`, { method: "DELETE" });
+  show(); // Refresh the movie list after deletion
+}
+
+async function editMovie(movieId) {
+  let response = await fetch(`http://localhost:3000/movies/${movieId}`);
+  let movieDetails = await response.json();
+
+  // Populate the form with movie details for editing
+  document.querySelector("#title").value = movieDetails.title;
+  document.querySelector("#description").value = movieDetails.description;
+  document.querySelector("#releaseYear").value = movieDetails.releaseYear;
+  document.querySelector("#genre").value = movieDetails.genre;
+  document.querySelector("#director").value = movieDetails.director;
+  document.querySelector("#actorName1").value = movieDetails.actorName1;
+  document.querySelector("#actorAge1").value = movieDetails.actorAge1;
+  document.querySelector("#actorCountry1").value = movieDetails.actorCountry1;
+  document.querySelector("#actorName2").value = movieDetails.actorName2;
+  document.querySelector("#actorAge2").value = movieDetails.actorAge2;
+  document.querySelector("#actorCountry2").value = movieDetails.actorCountry2;
+  document.querySelector("#actorName3").value = movieDetails.actorName3;
+  document.querySelector("#actorAge3").value = movieDetails.actorAge3;
+  document.querySelector("#actorCountry3").value = movieDetails.actorCountry3;
+
+  // Update the form button to indicate editing mode
+  document.querySelector("#addMovieBtn").innerText = "Update Movie";
+
+  document
+    .querySelector("#addMovieBtn")
+    .addEventListener("click", async function (event) {
+      event.preventDefault();
+      await updateMovie(movieId);
+    });
+}
+
+async function updateMovie(movieId) {
+  // Implement logic to update the movie in the database and update UI
+  const title = document.querySelector("#title").value;
+  const description = document.querySelector("#description").value;
+  const releaseYear = document.querySelector("#releaseYear").value;
+  const genre = document.querySelector("#genre").value;
+  const director = document.querySelector("#director").value;
+  const actorName1 = document.querySelector("#actorName1").value;
+  const actorAge1 = document.querySelector("#actorAge1").value;
+  const actorCountry1 = document.querySelector("#actorCountry1").value;
+  const actorName2 = document.querySelector("#actorName2").value;
+  const actorAge2 = document.querySelector("#actorAge2").value;
+  const actorCountry2 = document.querySelector("#actorCountry2").value;
+  const actorName3 = document.querySelector("#actorName3").value;
+  const actorAge3 = document.querySelector("#actorAge3").value;
+  const actorCountry3 = document.querySelector("#actorCountry3").value;
+
+  await fetch(`http://localhost:3000/movies/${movieId}`, {
+    method: "PUT",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      title: title,
+      description: description,
+      releaseYear: releaseYear,
+      genre: genre,
+      director: director,
+      actorName1: actorName1,
+      actorAge1: actorAge1,
+      actorCountry1: actorCountry1,
+      actorName2: actorName2,
+      actorAge2: actorAge2,
+      actorCountry2: actorCountry2,
+      actorName3: actorName3,
+      actorAge3: actorAge3,
+      actorCountry3: actorCountry3,
+    }),
+  });
+
+  // Reset the form and update the button text to indicate add mode
+  document.querySelector("#addMovieBtn").innerText = "Add Movie";
+  document
+    .querySelector("#addMovieBtn")
+    .removeEventListener("click", updateMovie);
+
+  document.querySelector("#title").value = "";
+  document.querySelector("#description").value = "";
+  document.querySelector("#releaseYear").value = "";
+  document.querySelector("#genre").value = "";
+  document.querySelector("#director").value = "";
+  document.querySelector(`#actorName1`).value = "";
+  document.querySelector(`#actorAge1`).value = "";
+  document.querySelector(`#actorCountry1`).value = "";
+  document.querySelector(`#actorName2`).value = "";
+  document.querySelector(`#actorAge2`).value = "";
+  document.querySelector(`#actorCountry2`).value = "";
+  document.querySelector(`#actorName3`).value = "";
+  document.querySelector(`#actorAge3`).value = "";
+  document.querySelector(`#actorCountry3`).value = "";
+  show();
+}
+
 document.querySelector(".d-flex").addEventListener("submit", function (event) {
   event.preventDefault();
   searchMovies();

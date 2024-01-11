@@ -66,6 +66,27 @@ app.post("/movies", (req, res) => {
   );
 });
 
+app.delete("/movies/:id", (req, res) => {
+  const movieId = req.params.id;
+  db.run(`DELETE FROM movies WHERE id = ?`, [movieId], () => {
+    res.send("Movie deleted");
+  });
+});
+
+// Add this route to handle GET requests for a single movie
+app.get("/movies/:id", (req, res) => {
+  const movieId = req.params.id;
+  db.get(`SELECT * FROM movies WHERE id = ?`, [movieId], (error, row) => {
+    if (error) {
+      res.status(500).send("Internal Server Error");
+    } else if (row) {
+      res.send(row);
+    } else {
+      res.status(404).send("Movie not found");
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
