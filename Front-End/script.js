@@ -61,66 +61,92 @@ async function show() {
 
   for (let index = 0; index < movies.length; index++) {
     document.querySelector("#movie-list").innerHTML += `
-      <div class="card mb-3">
-        <div class="card-body">
-          <button type="button" class="btn-close" aria-label="Close" onclick="deleteMovie(${movies[index].id})"
-            style="position: absolute; top: 15px; right: 15px;"></button>
-          <h5 class="card-title mb-3">${movies[index].title}</h5>
-          <p class="card-text">
-            <strong>Description:</strong> ${movies[index].description}
-          </p>
-          <p class="card-text"><strong>Release Year:</strong> ${movies[index].releaseYear}</p>
-          <p class="card-text"><strong>Genre:</strong> ${movies[index].genre}</p>
-          <p class="card-text"><strong>Director:</strong> ${movies[index].director}</p>
-          <h6 class="card-subtitle mb-3 mt-4 text-muted">Cast</h6>
-          <div class="list-group">
-            <div class="list-group-item">
-              <div class="row">
-                <div class="col">
-                  <h6 class="mb-1">${movies[index].actorName1}</h6>
-                </div>
-                <div class="col text-end">
-                  <small>Age: ${movies[index].actorAge1}</small>
-                </div>
-                <div class="col text-end">
-                  <small>Country: ${movies[index].actorCountry1}</small>
-                </div>
+          <div class="card mb-3">
+              <div class="card-body">
+                  <button type="button" class="btn-close" aria-label="Close" onclick="deleteMovie(${movies[index].id})"
+                      style="position: absolute; top: 15px; right: 15px;"></button>
+                  <h5 class="card-title mb-3">${movies[index].title}</h5>
+                  <p class="card-text">
+                      <strong>Description:</strong> ${movies[index].description}
+                  </p>
+                  <p class="card-text"><strong>Release Year:</strong> ${movies[index].releaseYear}</p>
+                  <p class="card-text"><strong>Genre:</strong> ${movies[index].genre}</p>
+                  <p class="card-text"><strong>Director:</strong> ${movies[index].director}</p>
+                  <h6 class="card-subtitle mb-3 mt-4 text-muted">Cast</h6>
+                  <div class="list-group">
+                      <div class="list-group-item">
+                          <div class="row">
+                              <div class="col">
+                                  <h6 class="mb-1">${movies[index].actorName1}</h6>
+                              </div>
+                              <div class="col text-end">
+                                  <small>Age: ${movies[index].actorAge1}</small>
+                              </div>
+                              <div class="col text-end">
+                                  <small>Country: ${movies[index].actorCountry1}</small>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="list-group-item">
+                          <div class="row">
+                              <div class="col">
+                                  <h6 class="mb-1">${movies[index].actorName2}</h6>
+                              </div>
+                              <div class="col text-end">
+                                  <small>Age: ${movies[index].actorAge2}</small>
+                              </div>
+                              <div class="col text-end">
+                                  <small>Country: ${movies[index].actorCountry2}</small>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="list-group-item">
+                          <div class="row">
+                              <div class="col">
+                                  <h6 class="mb-1">${movies[index].actorName3}</h6>
+                              </div>
+                              <div class="col text-end">
+                                  <small>Age: ${movies[index].actorAge3}</small>
+                              </div>
+                              <div class="col text-end">
+                                  <small>Country: ${movies[index].actorCountry3}</small>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Like button -->
+                  <div class="row mt-4">
+                  <div class="col">
+                      <button type="button" class="btn like-button" style="border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;" onclick="likeMovie(${movies[index].id})">
+                          Like <span class="like-count">${movies[index].likes}</span>
+                      </button>
+                  </div>
+                  <div class="col text-end">
+                      <button type="button" class="btn edit-button" style="border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;" onclick="editMovie(${movies[index].id})">
+                          Edit
+                      </button>
+                  </div>
+                  </div>
+                  <!-- Add a container for comments -->
+                  <div class="comments-container">
+                      <h6 class="text-muted">Comments</h6>
+                      <!-- Comment form -->
+                      <form class="comment-form mb-2">
+                          <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Add a comment" />
+                              <button type="button" class="btn btn-primary btn-block" onclick="postComment(${movies[index].id}, this)">Post</button>
+                          </div>
+                      </form>
+                      <!-- Comment list -->
+                      <ul class="list-group comment-list" id="comment-list-${movies[index].id}">
+                          <!-- Comments will be dynamically added here -->
+                      </ul>
+                  </div>
               </div>
-            </div>
-            <div class="list-group-item">
-              <div class="row">
-                <div class="col">
-                  <h6 class="mb-1">${movies[index].actorName2}</h6>
-                </div>
-                <div class="col text-end">
-                  <small>Age: ${movies[index].actorAge2}</small>
-                </div>
-                <div class="col text-end">
-                  <small>Country: ${movies[index].actorCountry2}</small>
-                </div>
-              </div>
-            </div>
-            <div class="list-group-item">
-              <div class="row">
-                <div class="col">
-                  <h6 class="mb-1">${movies[index].actorName3}</h6>
-                </div>
-                <div class="col text-end">
-                  <small>Age: ${movies[index].actorAge3}</small>
-                </div>
-                <div class="col text-end">
-                  <small>Country: ${movies[index].actorCountry3}</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-5">
-            <div class="col">
-              <button type="button" class="btn btn-info edit-button" onclick="editMovie(${movies[index].id})"
-              style="position: absolute; bottom: 15px; right: 15px; border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;">Edit</button></div>
-          </div>
-        </div>
-      </div>`;
+          </div>`;
+
+    // Fetch and display comments for each movie
+    await fetchAndDisplayComments(movies[index].id);
   }
 }
 
@@ -239,6 +265,53 @@ async function updateMovie(movieId) {
   document.querySelector(`#actorCountry3`).value = "";
 
   // Refresh the movie list
+  show();
+}
+
+async function fetchAndDisplayComments(movieId) {
+  let response = await fetch(`http://localhost:3000/comments/${movieId}`);
+  let comments = await response.json();
+  const commentList = document.getElementById(`comment-list-${movieId}`);
+  commentList.innerHTML = ""; // Clear existing comments
+
+  comments.forEach((comment) => {
+    const listItem = document.createElement("li");
+    listItem.className = "list-group-item";
+    listItem.textContent = comment.text;
+    commentList.appendChild(listItem);
+  });
+}
+
+// Function to post a comment
+async function postComment(movieId, buttonElement) {
+  const inputElement =
+    buttonElement.parentElement.querySelector(".form-control");
+  const commentText = inputElement.value;
+
+  if (commentText.trim() !== "") {
+    // Post the comment to the server
+    await fetch(`http://localhost:3000/comments/${movieId}`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ text: commentText }),
+    });
+
+    // Fetch and display updated comments
+    await fetchAndDisplayComments(movieId);
+
+    // Clear the input field
+    inputElement.value = "";
+  }
+}
+
+async function likeMovie(movieId) {
+  console.log("Like button clicked for movieId:", movieId);
+
+  await fetch(`http://localhost:3000/movies/${movieId}/like`, {
+    method: "POST",
+  });
+
+  // Call the show function after the like request is completed
   show();
 }
 

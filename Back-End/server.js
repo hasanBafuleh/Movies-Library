@@ -15,7 +15,11 @@ app.get("/", (req, res) => {
 });
 
 app.get("/movies", (req, res) => {
-  db.all(`SELECT * FROM movies`, {}, (error, rows) => res.send(rows));
+  db.all(
+    `SELECT id, title, description, releaseYear, genre, director, actorName1, actorAge1, actorCountry1, actorName2, actorAge2, actorCountry2, actorName3, actorAge3, actorCountry3, likes FROM movies`,
+    {},
+    (error, rows) => res.send(rows)
+  );
 });
 
 app.post("/movies", (req, res) => {
@@ -76,14 +80,45 @@ app.delete("/movies/:id", (req, res) => {
 // Add this route to handle GET requests for a single movie
 app.get("/movies/:id", (req, res) => {
   const movieId = req.params.id;
-  db.get(`SELECT * FROM movies WHERE id = ?`, [movieId], (error, row) => {
-    if (error) {
-      res.status(500).send("Internal Server Error");
-    } else if (row) {
-      res.send(row);
-    } else {
-      res.status(404).send("Movie not found");
+  db.get(
+    `SELECT id, title, description, releaseYear, genre, director, actorName1, actorAge1, actorCountry1, actorName2, actorAge2, actorCountry2, actorName3, actorAge3, actorCountry3, likes FROM movies WHERE id = ?`,
+    [movieId],
+    (error, row) => {
+      if (error) {
+        res.status(500).send("Internal Server Error");
+      } else if (row) {
+        res.send(row);
+      } else {
+        res.status(404).send("Movie not found");
+      }
     }
+  );
+});
+
+app.get("/comments/:movieId", (req, res) => {
+  const movieId = req.params.movieId;
+  db.all(`SELECT * FROM comments WHERE movieId = ?`, [movieId], (error, rows) =>
+    res.send(rows)
+  );
+});
+
+app.post("/comments/:movieId", (req, res) => {
+  const movieId = req.params.movieId;
+  const commentText = req.body.text;
+
+  db.run(
+    `INSERT INTO comments (movieId, text) VALUES (?, ?)`,
+    [movieId, commentText],
+    () => {
+      res.send("Comment added");
+    }
+  );
+});
+
+app.post("/movies/:id/like", (req, res) => {
+  const movieId = req.params.id;
+  db.run(`UPDATE movies SET likes = likes + 1 WHERE id = ?`, [movieId], () => {
+    res.send("Like added");
   });
 });
 

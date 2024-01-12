@@ -18,7 +18,19 @@ db.run(
         [actorCountry2] NVARCHAR(255),
         [actorName3] NVARCHAR(255),
         [actorAge3] NVARCHAR(255),
-        [actorCountry3] NVARCHAR(255)
+        [actorCountry3] NVARCHAR(255),
+        [likes] INTEGER DEFAULT 0
     )
 `
+);
+
+db.run(
+  `
+    CREATE TABLE comments (
+        [id] INTEGER PRIMARY KEY,
+        [movieId] INTEGER,
+        [text] NVARCHAR(255),
+        FOREIGN KEY(movieId) REFERENCES movies(id)
+    )
+  `
 );
