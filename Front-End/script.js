@@ -264,7 +264,6 @@ async function updateMovie(movieId) {
   document.querySelector(`#actorAge3`).value = "";
   document.querySelector(`#actorCountry3`).value = "";
 
-  // Refresh the movie list
   show();
 }
 
@@ -289,7 +288,7 @@ async function postComment(movieId, buttonElement) {
   const commentText = inputElement.value;
 
   if (commentText.trim() !== "") {
-    // Post the comment to the server
+
     await fetch(`http://localhost:3000/comments/${movieId}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -299,7 +298,6 @@ async function postComment(movieId, buttonElement) {
     // Fetch and display updated comments
     await fetchAndDisplayComments(movieId);
 
-    // Clear the input field
     inputElement.value = "";
   }
 }
@@ -311,7 +309,6 @@ async function likeMovie(movieId) {
     method: "POST",
   });
 
-  // Call the show function after the like request is completed
   show();
 }
 
