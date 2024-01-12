@@ -23,7 +23,6 @@ app.get("/movies", (req, res) => {
 });
 
 app.post("/movies", (req, res) => {
-  console.log(req.body);
   db.run(
     `
 
