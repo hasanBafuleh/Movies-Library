@@ -128,13 +128,13 @@ async function show() {
                   </div>
                   </div>
                   <!-- Add a container for comments -->
-                  <div class="comments-container">
+                  <div class="comments-container mt-3">
                       <h6 class="text-muted">Comments</h6>
                       <!-- Comment form -->
                       <form class="comment-form mb-2">
                           <div class="input-group">
                               <input type="text" class="form-control" placeholder="Add a comment" />
-                              <button type="button" class="btn btn-primary btn-block" onclick="postComment(${movies[index].id}, this)">Post</button>
+                              <button type="button" class="btn btn-primary btn-block rounded-start rounded-end" onclick="postComment(${movies[index].id}, this)">Post a Comment</button>
                           </div>
                       </form>
                       <!-- Comment list -->
@@ -288,7 +288,6 @@ async function postComment(movieId, buttonElement) {
   const commentText = inputElement.value;
 
   if (commentText.trim() !== "") {
-
     await fetch(`http://localhost:3000/comments/${movieId}`, {
       method: "POST",
       headers: { "content-type": "application/json" },

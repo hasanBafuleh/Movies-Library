@@ -2,6 +2,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #6dc1b0 !important;
 }
 
 header {
@@ -17,7 +18,6 @@ header {
   padding: 40px;
   margin-bottom: 20px;
   text-align: center;
-  border: 1px solid #ddd;
 }
 
 #welcome-section p {
@@ -26,10 +26,12 @@ header {
 }
 
 main {
+  background-color: white !important;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 3px solid rgba(4, 67, 62, 0.843);
+  border-radius: 10px;
 }
 
 h2 {
@@ -85,12 +87,12 @@ body .navbar button:hover {
 }
 
 body .navbar {
-  background-color: #6dc1b0 !important;
+  background-color: rgb(110, 194, 177) !important;
 }
 
 body .navbar button {
   border-radius: 4px;
-  background-color: #04423dd7;
+  background-color: rgba(4, 66, 61, 0.843);
   color: #fff;
 }
 
