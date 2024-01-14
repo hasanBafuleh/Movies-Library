@@ -61,7 +61,7 @@ async function show() {
 
   for (let index = 0; index < movies.length; index++) {
     document.querySelector("#movie-list").innerHTML += `
-          <div class="card mb-3">
+          <div class="card mb-3 custom-border-color">
               <div class="card-body">
                   <button type="button" class="btn-close" aria-label="Close" onclick="deleteMovie(${movies[index].id})"
                       style="position: absolute; top: 15px; right: 15px;"></button>
@@ -74,7 +74,7 @@ async function show() {
                   <p class="card-text"><strong>Director:</strong> ${movies[index].director}</p>
                   <h6 class="card-subtitle mb-3 mt-4 text-muted">Cast</h6>
                   <div class="list-group">
-                      <div class="list-group-item">
+                      <div class="list-group-item custom-border-color">
                           <div class="row">
                               <div class="col">
                                   <h6 class="mb-1">${movies[index].actorName1}</h6>
@@ -87,7 +87,7 @@ async function show() {
                               </div>
                           </div>
                       </div>
-                      <div class="list-group-item">
+                      <div class="list-group-item custom-border-color">
                           <div class="row">
                               <div class="col">
                                   <h6 class="mb-1">${movies[index].actorName2}</h6>
@@ -100,7 +100,7 @@ async function show() {
                               </div>
                           </div>
                       </div>
-                      <div class="list-group-item">
+                      <div class="list-group-item custom-border-color">
                           <div class="row">
                               <div class="col">
                                   <h6 class="mb-1">${movies[index].actorName3}</h6>
@@ -133,12 +133,12 @@ async function show() {
                       <!-- Comment form -->
                       <form class="comment-form mb-2">
                           <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Add a comment" />
+                              <input type="text" class="form-control custom-border-color rounded-start rounded-end" placeholder="Add a comment" />
                               <button type="button" class="btn btn-primary btn-block rounded-start rounded-end" onclick="postComment(${movies[index].id}, this)">Post a Comment</button>
                           </div>
                       </form>
                       <!-- Comment list -->
-                      <ul class="list-group comment-list" id="comment-list-${movies[index].id}">
+                      <ul class="list-group comment-list custom-border-color" id="comment-list-${movies[index].id}">
                           <!-- Comments will be dynamically added here -->
                       </ul>
                   </div>

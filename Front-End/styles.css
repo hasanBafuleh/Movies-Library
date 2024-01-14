@@ -111,3 +111,13 @@ body .navbar .container-fluid .d-flex {
   width: 100%;
   max-width: 400px;
 }
+
+.custom-border-color {
+  border-color: rgba(4, 67, 62, 0.843) !important;
+}
+
+#movie-list .comment-list .list-group-item {
+  border-color: rgba(4, 67, 62, 0.843) !important;
+  border-top: 1px solid rgba(4, 67, 62, 0.843) !important;
+  border-radius: 5px 5px 5px 5px !important;
+}
