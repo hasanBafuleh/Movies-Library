@@ -72,7 +72,7 @@ label {
 
 button.btn-primary,
 button.btn-secondary {
-  background-color: #04423dd7;
+  background-color: rgba(4, 66, 61, 0.843);
   color: #fff;
   padding: 10px;
   border: none;
@@ -81,19 +81,12 @@ button.btn-secondary {
 }
 
 button.btn-primary:hover,
-button.btn-secondary:hover,
-body .navbar button:hover {
+button.btn-secondary:hover {
   background-color: #006c65 !important;
 }
 
 body .navbar {
   background-color: rgb(110, 194, 177) !important;
-}
-
-body .navbar button {
-  border-radius: 4px;
-  background-color: rgba(4, 66, 61, 0.843);
-  color: #fff;
 }
 
 body .navbar form {
@@ -120,4 +113,36 @@ body .navbar .container-fluid .d-flex {
   border-color: rgba(4, 67, 62, 0.843) !important;
   border-top: 1px solid rgba(4, 67, 62, 0.843) !important;
   border-radius: 5px 5px 5px 5px !important;
+}
+
+button.btn-outline-success {
+  background: none !important; /* Remove background */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button.btn-outline-success i {
+  /* Style the search icon */
+  font-size: 18px;
+  color: rgba(4, 67, 62, 0.843);
+}
+
+.custom-border-color {
+  border-color: rgba(4, 67, 62, 0.843) !important;
+}
+
+/* Adjust the layout to position the icon to the right */
+form.d-flex {
+  position: relative;
+}
+
+input.form-control {
+  padding-right: 40px;
+  padding-bottom: 10px; /* Adjust the padding to make space for the icon */
+}
+
+button.btn-outline-success {
+  position: absolute;
+  right: 10px; /* Adjust the right position as needed */
 }

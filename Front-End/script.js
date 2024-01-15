@@ -117,15 +117,16 @@ async function show() {
                   <!-- Like button -->
                   <div class="row mt-4">
                   <div class="col">
-                      <button type="button" class="btn like-button" style="border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;" onclick="likeMovie(${movies[index].id})">
-                          Like <span class="like-count">${movies[index].likes}</span>
-                      </button>
+                  <button type="button" class="btn edit-button" style="border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;" onclick="editMovie(${movies[index].id})">
+                      Edit
+                  </button>
                   </div>
                   <div class="col text-end">
-                      <button type="button" class="btn edit-button" style="border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;" onclick="editMovie(${movies[index].id})">
-                          Edit
-                      </button>
-                  </div>
+                  <button type="button" class="btn like-button" style="border-radius: 4px; background: none; color: rgba(4, 67, 62, 0.843); border: none; box-shadow: none; font-size: 18px;" onclick="likeMovie(${movies[index].id})">
+                    <i class="fa fa-thumbs-up" style="font-size: 24px;"></i>
+                    <span class="like-count" style="margin-left: 8px; font-size: 16px;">${movies[index].likes}</span>
+                  </button>
+                </div>
                   </div>
                   <!-- Add a container for comments -->
                   <div class="comments-container mt-3">
