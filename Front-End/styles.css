@@ -19,9 +19,39 @@ header {
   text-align: center;
 }
 
+#welcome-section article {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#welcome-section h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
 #welcome-section p {
-  font-size: 20px;
-  margin: 20px 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+#welcome-section nav {
+  margin-top: 20px;
+}
+
+.form-control.custom-border-Nav {
+  border-color: rgba(4, 67, 62, 0.843) !important;
+}
+
+.btn-outline-success {
+  background-color: transparent;
+  border-color: rgba(4, 67, 62, 0.843);
+  color: #fff;
+}
+
+.btn-outline-success:hover {
+  background-color: rgba(4, 67, 62, 0.843);
+  color: #fff;
 }
 
 main {
@@ -32,6 +62,11 @@ main {
   padding: 20px;
   border: 3px solid rgba(4, 67, 62, 0.843);
   border-radius: 10px;
+}
+
+#movie-list,
+#add-movie {
+  margin-bottom: 20px;
 }
 
 .custom-border-card {
@@ -48,11 +83,6 @@ main {
 
 h2 {
   color: #333;
-}
-
-#movie-list,
-#add-movie {
-  margin-bottom: 20px;
 }
 
 ul {
@@ -144,7 +174,7 @@ button.btn-outline-success i {
   border-color: rgba(4, 67, 62, 0.843) !important;
 }
 
-/* Adjust the layout to position the icon to the right */
+/* icon to the right */
 form.d-flex {
   position: relative;
 }
@@ -156,5 +186,5 @@ input.form-control {
 
 button.btn-outline-success {
   position: absolute;
-  right: 10px; /* Adjust the right position as needed */
+  right: 10px;
 }
