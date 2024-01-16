@@ -61,7 +61,7 @@ async function show() {
 
   for (let index = 0; index < movies.length; index++) {
     document.querySelector("#movie-list").innerHTML += `
-          <div class="card mb-3 custom-border-color">
+          <div class="card mb-3 custom-border-card">
               <div class="card-body">
                   <button type="button" class="btn-close" aria-label="Close" onclick="deleteMovie(${movies[index].id})"
                       style="position: absolute; top: 15px; right: 15px;"></button>

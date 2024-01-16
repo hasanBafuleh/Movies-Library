@@ -16,7 +16,6 @@ header {
   background-color: #6dc1b0;
   color: #fff;
   padding: 40px;
-  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -29,9 +28,22 @@ main {
   background-color: white !important;
   max-width: 800px;
   margin: 0 auto;
+  margin-bottom: 20px;
   padding: 20px;
   border: 3px solid rgba(4, 67, 62, 0.843);
   border-radius: 10px;
+}
+
+.custom-border-card {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 3px solid rgba(4, 67, 62, 0.843) !important;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.custom-border-Nav {
+  border: 3px solid rgba(4, 67, 62, 0.843) !important;
 }
 
 h2 {
