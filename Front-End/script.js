@@ -122,8 +122,8 @@ async function show() {
                   </button>
                   </div>
                   <div class="col text-end">
-                  <button type="button" class="btn like-button" style="border-radius: 4px; background: none; color: rgba(4, 67, 62, 0.843); border: none; box-shadow: none; font-size: 18px;" onclick="likeMovie(${movies[index].id})">
-                    <i class="fa fa-thumbs-up" style="font-size: 24px;"></i>
+                  <button type="button" class="btn like-button" style="border-radius: 4px; background: rgba(4, 67, 62, 0.843); color: rgba(255, 255, 255, 1); border: none; box-shadow: none; font-size: 18px;" onclick="likeMovie(${movies[index].id})">
+                    <i class="fa fa-thumbs-up" style="font-size: 20px;"></i>
                     <span class="like-count" style="margin-left: 8px; font-size: 16px;">${movies[index].likes}</span>
                   </button>
                 </div>
