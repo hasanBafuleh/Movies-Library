@@ -110,6 +110,7 @@ label {
   width: 100%;
   padding: 10px;
   margin-bottom: 5px;
+  border-radius: 10px !important;
 }
 
 button.btn-primary,
@@ -120,6 +121,7 @@ button.btn-secondary {
   border: none;
   cursor: pointer;
   width: 100%;
+  border-radius: 10px !important;
 }
 
 button.btn-primary:hover,
@@ -154,7 +156,7 @@ body .navbar .container-fluid .d-flex {
 #movie-list .comment-list .list-group-item {
   border-color: rgba(4, 67, 62, 0.843) !important;
   border-top: 1px solid rgba(4, 67, 62, 0.843) !important;
-  border-radius: 5px 5px 5px 5px !important;
+  border-radius: 10px !important;
 }
 
 button.btn-outline-success {

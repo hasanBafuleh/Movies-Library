@@ -117,12 +117,12 @@ async function show() {
                   <!-- Like button -->
                   <div class="row mt-4">
                   <div class="col">
-                  <button type="button" class="btn edit-button" style="border-radius: 4px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;" onclick="editMovie(${movies[index].id})">
+                  <button type="button" class="btn edit-button" style="border-radius: 10px; background-color: #04423dd7; color: #fff; border: none; box-shadow: none;" onclick="editMovie(${movies[index].id})">
                       Edit
                   </button>
                   </div>
                   <div class="col text-end">
-                  <button type="button" class="btn like-button" style="border-radius: 4px; background: rgba(4, 67, 62, 0.843); color: rgba(255, 255, 255, 1); border: none; box-shadow: none; font-size: 18px;" onclick="likeMovie(${movies[index].id})">
+                  <button type="button" class="btn like-button" style="border-radius: 10px; background: rgba(4, 67, 62, 0.843); color: rgba(255, 255, 255, 1); border: none; box-shadow: none; font-size: 18px;" onclick="likeMovie(${movies[index].id})">
                     <i class="fa fa-thumbs-up" style="font-size: 20px;"></i>
                     <span class="like-count" style="margin-left: 8px; font-size: 16px;">${movies[index].likes}</span>
                   </button>
@@ -134,8 +134,8 @@ async function show() {
                       <!-- Comment form -->
                       <form class="comment-form mb-2">
                           <div class="input-group">
-                              <input type="text" class="form-control custom-border-color rounded-start rounded-end" placeholder="Add a comment" />
-                              <button type="button" class="btn btn-primary btn-block rounded-start rounded-end" onclick="postComment(${movies[index].id}, this)">Post a Comment</button>
+                          <input type="text" class="form-control custom-border-color rounded-start rounded-end" style="border-radius: 10px !important;" placeholder="Add a comment" />
+                          <button type="button" class="btn btn-primary btn-block rounded-start rounded-end" onclick="postComment(${movies[index].id}, this)">Post a Comment</button>
                           </div>
                       </form>
                       <!-- Comment list -->
