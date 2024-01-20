@@ -69,6 +69,60 @@ app.post("/movies", (req, res) => {
   );
 });
 
+app.put("/movies/:id", (req, res) => {
+  const movieId = req.params.id;
+  console.log(`Update request received for movie ID: ${movieId}`);
+  console.log(`Received data:`, req.body);
+
+  db.run(
+    `
+    UPDATE movies
+    SET
+        title = ?,
+        description = ?,
+        releaseYear = ?,
+        genre = ?,
+        director = ?,
+        actorName1 = ?,
+        actorAge1 = ?,
+        actorCountry1 = ?,
+        actorName2 = ?,
+        actorAge2 = ?,
+        actorCountry2 = ?,
+        actorName3 = ?,
+        actorAge3 = ?,
+        actorCountry3 = ?
+    WHERE id = ?
+  `,
+    [
+      req.body.title,
+      req.body.description,
+      req.body.releaseYear,
+      req.body.genre,
+      req.body.director,
+      req.body.actorName1,
+      req.body.actorAge1,
+      req.body.actorCountry1,
+      req.body.actorName2,
+      req.body.actorAge2,
+      req.body.actorCountry2,
+      req.body.actorName3,
+      req.body.actorAge3,
+      req.body.actorCountry3,
+      movieId,
+    ],
+    (error) => {
+      if (error) {
+        console.error("Error updating movie:", error.message);
+        res.status(500).send("Internal Server Error");
+      } else {
+        console.log("Movie updated successfully");
+        res.send("Movie updated successfully");
+      }
+    }
+  );
+});
+
 app.delete("/movies/:id", (req, res) => {
   const movieId = req.params.id;
   db.run(`DELETE FROM movies WHERE id = ?`, [movieId], () => {

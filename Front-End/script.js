@@ -176,7 +176,16 @@ async function deleteMovie(movieId) {
   show(); // Refresh the movie list after deletion
 }
 
+// Function to update the movie in the database
 async function editMovie(movieId) {
+  setTimeout(() => {
+    // Scroll to the top with a smooth animation
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, 1000);
+
   let response = await fetch(`http://localhost:3000/movies/${movieId}`);
   let movieDetails = await response.json();
 
@@ -268,20 +277,6 @@ async function updateMovie(movieId) {
   show();
 }
 
-async function fetchAndDisplayComments(movieId) {
-  let response = await fetch(`http://localhost:3000/comments/${movieId}`);
-  let comments = await response.json();
-  const commentList = document.getElementById(`comment-list-${movieId}`);
-  commentList.innerHTML = ""; // Clear existing comments
-
-  comments.forEach((comment) => {
-    const listItem = document.createElement("li");
-    listItem.className = "list-group-item";
-    listItem.textContent = comment.text;
-    commentList.appendChild(listItem);
-  });
-}
-
 // Function to post a comment
 async function postComment(movieId, buttonElement) {
   const inputElement =
@@ -302,6 +297,22 @@ async function postComment(movieId, buttonElement) {
   }
 }
 
+// Function to fetch and display comments
+async function fetchAndDisplayComments(movieId) {
+  let response = await fetch(`http://localhost:3000/comments/${movieId}`);
+  let comments = await response.json();
+  const commentList = document.getElementById(`comment-list-${movieId}`);
+  commentList.innerHTML = ""; // Clear existing comments
+
+  comments.forEach((comment) => {
+    const listItem = document.createElement("li");
+    listItem.className = "list-group-item";
+    listItem.textContent = comment.text;
+    commentList.appendChild(listItem);
+  });
+}
+
+// Function to like a movie
 async function likeMovie(movieId) {
   console.log("Like button clicked for movieId:", movieId);
 
