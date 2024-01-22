@@ -178,13 +178,11 @@ async function deleteMovie(movieId) {
 
 // Function to update the movie in the database
 async function editMovie(movieId) {
-  setTimeout(() => {
     // Scroll to the top with a smooth animation
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }, 1000);
 
   let response = await fetch(`http://localhost:3000/movies/${movieId}`);
   let movieDetails = await response.json();
