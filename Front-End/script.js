@@ -217,7 +217,6 @@ async function editMovie(movieId) {
 }
 
 async function updateMovie(movieId) {
-  // Delete the old movie
   await fetch(`http://localhost:3000/movies/${movieId}`, { method: "DELETE" });
 
   // Update the existing movie in the array
