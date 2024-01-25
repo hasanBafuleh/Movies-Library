@@ -125,9 +125,28 @@ app.put("/movies/:id", (req, res) => {
 
 app.delete("/movies/:id", (req, res) => {
   const movieId = req.params.id;
-  db.run(`DELETE FROM movies WHERE id = ?`, [movieId], () => {
-    res.send("Movie deleted");
-  });
+
+  // Delete comments first
+  db.run(
+    `DELETE FROM comments WHERE movieId = ?`,
+    [movieId],
+    (commentError) => {
+      if (commentError) {
+        console.error("Error deleting comments:", commentError.message);
+        res.status(500).send("Internal Server Error");
+      } else {
+        // Once comments are deleted, delete the movie
+        db.run(`DELETE FROM movies WHERE id = ?`, [movieId], (movieError) => {
+          if (movieError) {
+            console.error("Error deleting movie:", movieError.message);
+            res.status(500).send("Internal Server Error");
+          } else {
+            res.send("Movie and related comments deleted");
+          }
+        });
+      }
+    }
+  );
 });
 
 // Add this route to handle GET requests for a single movie
