@@ -245,7 +245,6 @@ async function updateMovie(movieId) {
     body: JSON.stringify(updatedMovie),
   });
 
-  // Reload the page to reflect the updated movie in the same place
   location.reload();
 }
 
@@ -273,6 +272,7 @@ async function postComment(movieId, buttonElement) {
 async function fetchAndDisplayComments(movieId) {
   let response = await fetch(`http://localhost:3000/comments/${movieId}`);
   let comments = await response.json();
+  comments = comments.reverse();
   const commentList = document.getElementById(`comment-list-${movieId}`);
   commentList.innerHTML = ""; // Clear existing comments
 

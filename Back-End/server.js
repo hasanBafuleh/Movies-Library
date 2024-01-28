@@ -149,7 +149,7 @@ app.delete("/movies/:id", (req, res) => {
   );
 });
 
-// Add this route to handle GET requests for a single movie
+// GET requests for a single movie
 app.get("/movies/:id", (req, res) => {
   const movieId = req.params.id;
   db.get(
