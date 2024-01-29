@@ -160,7 +160,7 @@ body .navbar .container-fluid .d-flex {
 }
 
 button.btn-outline-success {
-  background: none !important; /* Remove background */
+  background: none !important; 
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -183,7 +183,7 @@ form.d-flex {
 
 input.form-control {
   padding-right: 40px;
-  padding-bottom: 10px; /* Adjust the padding to make space for the icon */
+  padding-bottom: 10px;
 }
 
 button.btn-outline-success {

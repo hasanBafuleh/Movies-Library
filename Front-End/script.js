@@ -184,7 +184,7 @@ function searchMovies() {
 async function deleteMovie(movieId) {
   // Implement logic to delete the movie from the database and update UI
   await fetch(`http://localhost:3000/movies/${movieId}`, { method: "DELETE" });
-  show(); // Refresh the movie list after deletion
+  show();
 }
 
 // Function to update the movie in the database
