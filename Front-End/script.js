@@ -136,19 +136,24 @@ async function show() {
                   </div>
                   <!-- Add a container for comments -->
                   <div class="comments-container mt-3">
-                      <h6 class="text-muted">Comments</h6>
-                      <!-- Comment form -->
-                      <form class="comment-form mb-2">
-                          <div class="input-group">
-                          <input type="text" class="form-control custom-border-color rounded-start rounded-end" style="border-radius: 10px !important;" placeholder="Add a comment" />
-                          <button type="button" class="btn btn-primary btn-block rounded-start rounded-end" onclick="postComment(${movies[index].id}, this)">Post a Comment</button>
-                          </div>
-                      </form>
-                      <!-- Comment list -->
-                      <ul class="list-group comment-list custom-border-color" id="comment-list-${movies[index].id}">
-                          <!-- Comments will be dynamically added here -->
-                      </ul>
-                  </div>
+                  <h6 class="text-muted">Comments</h6>
+                  <!-- Comment form -->
+                  <form class="comment-form mb-2">
+                    <div class="input-group">
+                      <div class="col-md-4" style="width: 33.33%;">
+                        <input id="commentName" type="text" class="form-control custom-border-color rounded-start" style="border-radius: 10px !important; width: 100%;" placeholder="Add your name" />
+                      </div>
+                      <div class="col-md-8" style="width: 66.66%; padding-left: 5px;">
+                        <input id="commentText" type="text" class="form-control custom-border-color rounded-end" style="border-radius: 10px !important; width: 100%;" placeholder="Add a comment" />
+                      </div>
+                      <button type="button" class="btn btn-primary btn-block rounded-start rounded-end" onclick="postComment(${movies[index].id}, this)">Post a Comment</button>
+                    </div>
+                  </form>                  
+                  <!-- Comment list -->
+                  <ul class="list-group comment-list custom-border-color" id="comment-list-${movies[index].id}">
+                    <!-- Comments will be dynamically added here -->
+                  </ul>
+                </div>
               </div>
           </div>`;
 
@@ -250,21 +255,27 @@ async function updateMovie(movieId) {
 
 // Function to post a comment
 async function postComment(movieId, buttonElement) {
-  const inputElement =
-    buttonElement.parentElement.querySelector(".form-control");
-  const commentText = inputElement.value;
+  const commentNameInput = document.querySelector(`#commentName`);
+  const commentTextInput = document.querySelector(`#commentText`);
+
+  const commentName = commentNameInput.value;
+  const commentText = commentTextInput.value;
 
   if (commentText.trim() !== "") {
     await fetch(`http://localhost:3000/comments/${movieId}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ text: commentText }),
+      body: JSON.stringify({
+        name: commentName,
+        text: commentText,
+      }),
     });
 
     // Fetch and display updated comments
     await fetchAndDisplayComments(movieId);
 
-    inputElement.value = "";
+    commentNameInput.value = "";
+    commentTextInput.value = "";
   }
 }
 
@@ -279,7 +290,7 @@ async function fetchAndDisplayComments(movieId) {
   comments.forEach((comment) => {
     const listItem = document.createElement("li");
     listItem.className = "list-group-item";
-    listItem.textContent = comment.text;
+    listItem.innerHTML = `<strong>${comment.name}:</strong> ${comment.text}`;
     commentList.appendChild(listItem);
   });
 }

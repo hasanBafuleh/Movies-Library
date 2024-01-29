@@ -176,11 +176,12 @@ app.get("/comments/:movieId", (req, res) => {
 
 app.post("/comments/:movieId", (req, res) => {
   const movieId = req.params.movieId;
+  const commentName = req.body.name;
   const commentText = req.body.text;
 
   db.run(
-    `INSERT INTO comments (movieId, text) VALUES (?, ?)`,
-    [movieId, commentText],
+    `INSERT INTO comments (movieId, name, text) VALUES (?, ?, ?)`,
+    [movieId, commentName, commentText],
     () => {
       res.send("Comment added");
     }

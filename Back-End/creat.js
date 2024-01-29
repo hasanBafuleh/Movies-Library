@@ -29,6 +29,7 @@ db.run(
     CREATE TABLE comments (
         [id] INTEGER PRIMARY KEY,
         [movieId] INTEGER,
+        [name] NVARCHAR(255),
         [text] NVARCHAR(255),
         FOREIGN KEY(movieId) REFERENCES movies(id)
     )
